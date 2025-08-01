@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRUPO ENE | Autopartes y Repuestos</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rojo: #d32f2f;
+      --gris-oscuro: #212121;
+      --gris-medio: #b0b0b0;
+      --gris-claro: #e0e0e0;
+      --negro: #111111;
+      --blanco: #fff;
+    }
+    body {
+      margin: 0;
+      font-family: 'Roboto', Arial, sans-serif;
+      background: linear-gradient(rgba(33,33,33,0.8),rgba(33,33,33,0.8)),
+        url('images/fondo.png') no-repeat center center/cover;
+      min-height: 100vh;
+      color: var(--blanco);
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3vw;
+      background: rgba(18,18,18,0.7);
+      border-bottom: 2px solid var(--rojo);
+    }
+    .logo-titulo {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .logo {
+      height: 64px;
+    }
+    .nombre-empresa {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--rojo);
+      letter-spacing: 1.5px;
+      text-shadow: 1px 1px 8px #0008;
+      text-transform: uppercase;
+      margin-left: 2px;
+    }
+    nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      font-weight: 700;
+      margin-left: 2rem;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      transition: background .2s;
+      font-size: 1.1rem;
+    }
+    nav a:hover {
+      background: var(--rojo);
+      color: var(--blanco);
+    }
+    .maintenance {
+      background: var(--gris-medio);
+      color: var(--negro);
+      font-size: 0.85rem;
+      padding: 0.18em 0.6em;
+      border-radius: 8px;
+      margin-left: 0.5em;
+      font-weight: 600;
+      vertical-align: middle;
+      letter-spacing: 1px;
+    }
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 70vh;
+      text-align: center;
+    }
+    .hero-content {
+      background: rgba(17, 17, 17, 0.70);
+      padding: 38px 26px 30px 26px;
+      border-radius: 18px;
+      box-shadow: 0 4px 22px #000a;
+      display: inline-block;
+    }
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--rojo);
+      margin: 0 0 1rem 0;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px 12px #000, 0 0 4px #000, 0 2px 20px #000c;
+    }
+    .hero-sub {
+      font-size: 1.3rem;
+      color: var(--blanco);
+      margin-bottom: 2rem;
+      text-shadow: 2px 2px 8px #000, 0 0 2px #000b;
+    }
+    @media (max-width: 800px) {
+      .logo-titulo { gap: 8px; }
+      .nombre-empresa { font-size: 1.22rem; }
+      .logo { height: 38px; }
+    }
+    @media (max-width: 600px) {
+      header { flex-direction: column; align-items: flex-start; }
+      .logo-titulo { margin-bottom: 12px; }
+      nav a { margin-left: 0; margin-right: 1rem; font-size: 1rem; }
+      .hero-title { font-size: 2rem; }
+      .hero-content { padding: 16px 4vw 18px 4vw; border-radius: 11px;}
+      .hero-sub { font-size: 1.08rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo-titulo">
+      <img src="images/LOGO GRUPO ENE.png" alt="Logo Grupo ENE" class="logo">
+      <span class="nombre-empresa">GRUPO ENE</span>
+    </div>
+    <nav>
+      <a href="servicios.html">Servicios</a>
+      <a href="#productos">Productos<span class="maintenance">En mantenimiento</span></a>
+      <a href="contacto.html">Contacto</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">Compromiso solo con vos</h1>
+        <p class="hero-sub">Autopartes y repuestos del automotor para profesionales y particulares.<br>
+        Soluciones confiables. Atención personalizada. Calidad asegurada.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
