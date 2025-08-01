@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Contacto | GRUPO ENE</title>
+  <style>
+    body { background: #101010; margin: 0; font-family: 'Arial', sans-serif; color: #fff; }
+
+    /* NAVBAR */
+    .navbar-grupoene {
+      position: sticky; top: 0; width: 100%; z-index: 50;
+      background: #181818e6; border-bottom: 2px solid #d32f2f; box-shadow: 0 2px 12px #0008;
+    }
+    .navbar-content {
+      max-width: 1200px; margin: 0 auto; display: flex; align-items: center;
+      justify-content: space-between; padding: 0.4em 2vw;
+      transition: all .2s;
+    }
+    .navbar-logo {
+      height: 48px; width: auto; border-radius: 10px; background: #222;
+      box-shadow: 0 0 8px #1118; padding: 2px 5px; margin-right: 16px;
+      transition: height .2s;
+    }
+    .navbar-grupoene ul {
+      display: flex; align-items: center; list-style: none; margin: 0; padding: 0; gap: 12px;
+    }
+    .navbar-grupoene ul li a {
+      color: #e0e0e0; text-decoration: none; font-size: 1.05rem; font-weight: 600;
+      padding: 0.55em 1.1em; border-radius: 7px; transition: background .2s, color .2s, box-shadow .21s;
+      letter-spacing: 0.04em; display: flex; align-items: center; position: relative;
+    }
+    .navbar-grupoene ul li a.active,
+    .navbar-grupoene ul li a:hover:not(.disabled) {
+      background: #d32f2f; color: #fff; box-shadow: 0 2px 14px #d32f2f44;
+    }
+    .navbar-grupoene ul li a.disabled,
+    .navbar-grupoene ul li a.disabled:hover {
+      color: #aaa; background: #323232; cursor: not-allowed;
+    }
+    .badge {
+      background: #e0e0e0; color: #d32f2f; font-size: 0.81em; font-weight: 700; border-radius: 5px;
+      margin-left: 0.5em; padding: 0.12em 0.6em; letter-spacing: 0.04em; box-shadow: 0 0 2px #0006;
+    }
+    /* NAVBAR MOBILE */
+    @media (max-width: 700px) {
+      .navbar-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 0 6px 0;
+      }
+      .navbar-logo {
+        height: 34px;
+        margin-right: 0;
+        margin-bottom: 2px;
+      }
+      .navbar-grupoene ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        width: 100%;
+      }
+      .navbar-grupoene ul li a {
+        width: 96vw;
+        font-size: 1rem;
+        justify-content: center;
+        padding: 0.49em 0;
+      }
+    }
+    /* HEADER CONTACTO */
+    header.contact-header {
+      background: url('images/contacto-fondo.jpg') no-repeat center center/cover;
+      padding: 34px 8vw 22px 8vw;
+      text-align: center; position: relative;
+      min-height: 130px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    header.contact-header:before {
+      content: ""; position: absolute; left:0; top:0; width:100%; height:100%;
+      background: #101010c0; z-index: 1;
+    }
+    header.contact-header * { position: relative; z-index: 2; }
+    header.contact-header img {
+      width: 52px; margin-bottom: 10px; filter: drop-shadow(0 2px 16px #000b);
+    }
+    header.contact-header h1 {
+      font-size: 1.2rem; letter-spacing: 1px; font-weight: 900; color:#fff; margin-bottom:6px;
+    }
+    header.contact-header h2 {
+      font-size: 1rem; font-weight: 700; margin-bottom: 4px; letter-spacing: 1px;
+      color: #d32f2f; text-transform: uppercase;
+    }
+    header.contact-header .slogan {
+      color: #e0e0e0; font-size: 0.99rem; letter-spacing: .5px; font-weight: 500;
+      background: #d32f2fdd; border-radius: 8px; padding: 5px 15px; display: inline-block;
+      margin-top: 8px; box-shadow: 0 2px 8px #0007;
+    }
+    /* MAIN */
+    main.contacto-main {
+      width: 100%; max-width: 470px; margin: 18px auto 0 auto;
+      padding: 15px 4vw 18px 4vw; background: rgba(25,25,25,0.97);
+      border-radius: 13px; box-shadow: 0 4px 24px 0 #0007;
+    }
+    main.contacto-main h2 {
+      font-size: 1.09rem; margin-bottom: 11px; color: #d32f2f; letter-spacing: 1px;
+      font-weight: 800;
+    }
+    .datos-contacto {
+      margin-bottom: 18px; color: #e2e2e2; font-size: 1.00rem; line-height: 1.6;
+    }
+    .datos-contacto a {
+      color: #d32f2f; text-decoration: underline; font-weight: bold;
+      word-break: break-all;
+    }
+    .datos-contacto .dato-ubicacion { color: #fff; font-weight: bold; }
+    .datos-contacto .dato-horario { color: #ccc; font-size: 0.99rem; }
+    .contacto-wsp-btn {
+      display: block; width: 100%; text-align: center; background: #d32f2f; color: #fff; font-weight: bold;
+      border-radius: 8px; padding: 10px 0; text-decoration: none; margin: 10px 0 10px 0;
+      font-size: 1rem; box-shadow: 0 2px 14px #002; transition: filter .16s, background .16s;
+      letter-spacing: 1px;
+      color: #fff !important;
+      opacity: 1 !important;
+      text-shadow: 0 1px 4px #0007;
+      text-decoration: none !important;
+    }
+    .contacto-wsp-btn:focus {
+      color: #fff !important;
+      text-decoration: none !important;
+    }
+    .contacto-wsp-btn:hover { filter: brightness(1.15); background: #b62424;}
+
+    /* FORMULARIO */
+    form {
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    label { margin-bottom: 2px; color: #e2e2e2; font-size: 1rem; font-weight: 500;}
+    input, textarea {
+      padding: 8px; border-radius: 6px; border: none; background: #232323;
+      color: #fff; font-size: 0.98rem; resize: vertical;
+    }
+    textarea { min-height: 52px; }
+    button {
+      background: #d32f2f; color: #fff; padding: 9px 0;
+      font-weight: bold; border: none; border-radius: 7px; font-size: 1rem;
+      box-shadow: 0 2px 10px 0 #0005; cursor: pointer; margin-top: 6px; transition: background .18s;
+    }
+    button:hover { background: #fff; color: #d32f2f; }
+
+    @media (max-width: 430px) {
+      .navbar-content { flex-direction: column; padding: 4px 0; }
+      .navbar-logo { margin-right: 0; margin-bottom: 3px; height: 25px;}
+      header.contact-header img { width: 32px;}
+      main.contacto-main { padding: 4px 1vw 8px 1vw; border-radius: 9px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar-grupoene">
+  <div class="navbar-content">
+    <img src="images/LOGO GRUPO ENE.png" alt="Grupo ENE Logo" class="navbar-logo">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="#" class="disabled">Productos <span class="badge">En mantenimiento</span></a></li>
+      <li><a href="contacto.html" class="active">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HEADER de CONTACTO -->
+<header class="contact-header">
+  <img src="images/LOGO GRUPO ENE.png" alt="Logo Grupo ENE">
+  <h1>GRUPO ENE</h1>
+  <h2>Contacto</h2>
+  <div class="slogan">Compromiso solo con vos</div>
+</header>
+
+<main class="contacto-main">
+  <h2>Hablemos</h2>
+  <div class="datos-contacto">
+    <p>¿Tenés dudas, consulta o querés agendar un turno?</p>
+    <p><span class="dato-ubicacion">📍 Francisco Uriarte 951, Las Termas de Río Hondo, Santiago del Estero</span></p>
+    <p>
+      <b>Email:</b> <a href="mailto:grupoeneautopartes@gmail.com">grupoeneautopartes@gmail.com</a><br>
+      <b>WhatsApp:</b> <a href="https://wa.me/5493858483216" target="_blank">+54 9 385 848 3216</a><br>
+      <span class="dato-horario"><b>Horario:</b> Lunes a Viernes de 9 a 18 hs. Sábados de 9 a 13 hs.</span>
+    </p>
+    <a href="https://wa.me/5493858483216" target="_blank" class="contacto-wsp-btn">WhatsApp</a>
+  </div>
+  <form action="https://formspree.io/f/mdkdlnbg" method="POST">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="telefono">Teléfono</label>
+    <input type="tel" id="telefono" name="telefono" required>
+
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" name="mensaje" required></textarea>
+
+    <button type="submit">Enviar mensaje</button>
+  </form>
+  <p style="font-size:.93rem; color:#e2e2e2; margin-top: 11px;">
+    O dejanos tu mensaje y te respondemos en menos de 24 hs.
+  </p>
+</main>
+</body>
+</html>
