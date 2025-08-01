@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Servicios | GRUPO ENE</title>
+  <style>
+    body { background: #101010; margin: 0; }
+
+    /* NAVBAR */
+    .navbar-grupoene {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      background: #181818e6;
+      border-bottom: 2px solid #d32f2f;
+      box-shadow: 0 2px 12px #0008;
+    }
+    .navbar-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.4em 2vw 0.4em 2vw;
+    }
+    .navbar-logo {
+      height: 50px;
+      width: auto;
+      border-radius: 10px;
+      background: #222;
+      box-shadow: 0 0 8px #1118;
+      padding: 2px 5px;
+      margin-right: 24px;
+    }
+    .navbar-grupoene ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 12px;
+    }
+    .navbar-grupoene ul li a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 600;
+      padding: 0.55em 1.1em;
+      border-radius: 7px;
+      transition: background .2s, color .2s, box-shadow .21s;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+    .navbar-grupoene ul li a.active,
+    .navbar-grupoene ul li a:hover:not(.disabled) {
+      background: #d32f2f;
+      color: #fff;
+      box-shadow: 0 2px 14px #d32f2f44;
+    }
+    .navbar-grupoene ul li a.disabled,
+    .navbar-grupoene ul li a.disabled:hover {
+      color: #aaa;
+      background: #323232;
+      cursor: not-allowed;
+    }
+    .badge {
+      background: #e0e0e0;
+      color: #d32f2f;
+      font-size: 0.81em;
+      font-weight: 700;
+      border-radius: 5px;
+      margin-left: 0.5em;
+      padding: 0.12em 0.6em;
+      letter-spacing: 0.04em;
+      box-shadow: 0 0 2px #0006;
+    }
+    @media (max-width: 800px) {
+      .navbar-content { flex-direction: column; align-items: flex-start; gap:8px;}
+      .navbar-logo { height:38px; margin-bottom: 4px;}
+      .navbar-grupoene ul { gap: 6px;}
+      .navbar-grupoene ul li a { font-size:0.97rem;padding: 0.41em 0.8em;}
+    }
+
+    /* SERVICIOS */
+    .servicio-row {
+      display: flex;
+      align-items: stretch;
+      min-height: 260px;
+      margin-bottom: 22px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 6px 30px #0008, 0 1.5px 8px #d32f2f10;
+      background: #161616;
+      transition: box-shadow 0.2s;
+    }
+    .servicio-row.reverse { flex-direction: row-reverse; }
+    .servicio-img-bg {
+      flex: 1 1 46%;
+      background-size: cover;
+      background-position: center;
+      min-width: 150px;
+      min-height: 180px;
+      filter: grayscale(15%) brightness(0.8);
+      transition: filter .24s;
+    }
+    .servicio-row:hover .servicio-img-bg,
+    .servicio-row:focus .servicio-img-bg {
+      filter: grayscale(0%) brightness(1.05);
+    }
+    .servicio-info {
+      flex: 1 1 54%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 28px;
+      text-align: left;
+      background: linear-gradient(90deg, #181818f2 70%, #111c 100%);
+      min-height: 180px;
+    }
+    .servicio-info.right { background: linear-gradient(270deg, #181818f2 70%, #111c 100%);}
+    .servicio-info h3 {
+      color: #fff;
+      font-size: 1.37rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.1px;
+      text-shadow: 0 1px 10px #0009,0 1px 1px #d32f2f4a;
+    }
+    .servicio-info p {
+      color: #e0e0e0;
+      font-size: 1.09rem;
+      margin: 0;
+      letter-spacing: 0.05em;
+    }
+    .servicios-diferenciales {
+      margin: 54px auto 0 auto;
+      padding: 32px 18px 26px 18px;
+      background: #19191aee;
+      border-radius: 16px;
+      max-width: 700px;
+      text-align: center;
+      box-shadow: 0 2px 16px #000b;
+    }
+    .servicios-diferenciales h4 {
+      color: #d32f2f;
+      font-size: 1.35rem;
+      font-weight: 900;
+      margin-bottom: 18px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+    .diferenciales-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 30px;
+      justify-content: center;
+      color: #e0e0e0;
+      font-size: 1.09rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+    .diferenciales-list div {
+      display: flex;
+      align-items: center;
+      min-width: 250px;
+      background: #2222;
+      border-radius: 6px;
+      padding: 6px 16px;
+      margin-bottom: 4px;
+      font-weight: 500;
+    }
+    .diferenciales-list span {
+      color: #d32f2f;
+      font-size: 1.2rem;
+      margin-right: 10px;
+      font-weight: bold;
+    }
+
+    /* ----------- TABLET & MOBILE ------------ */
+    @media (max-width: 900px) {
+      .servicio-row, .servicio-row.reverse {
+        flex-direction: column;
+        min-height: 0;
+        margin-bottom: 18px;
+      }
+      .servicio-img-bg {
+        min-height: 170px;
+        width: 100%;
+        height: 180px;
+        border-radius: 0;
+      }
+      .servicio-info, .servicio-info.right {
+        padding: 26px 6vw;
+        text-align: center;
+        background: #181818ea !important;
+        border-radius: 0;
+      }
+      .servicios-diferenciales {
+        padding: 22px 5vw 10px 5vw;
+        margin-top: 32px;
+      }
+    }
+    @media (max-width: 600px) {
+      header h2 {font-size:1.25rem;}
+      .servicio-info h3 {font-size:1rem;}
+      .servicio-info p {font-size:0.93rem;}
+      .diferenciales-list div {min-width: 100px;font-size:0.93rem;}
+      .servicio-info, .servicio-info.right { padding: 16px 3vw; }
+      .servicio-img-bg { height: 120px; min-height: 90px; }
+    }
+    @media (max-width: 430px) {
+      .navbar-logo { height:28px; }
+      .navbar-content { padding: 4px 0 4px 2vw;}
+      .servicio-info h3 { font-size: 0.89rem;}
+      .servicio-info p { font-size: 0.81rem;}
+      .servicio-info, .servicio-info.right { padding: 10px 1vw;}
+      .servicio-img-bg { height: 66px; min-height: 50px;}
+      .servicios-diferenciales h4 { font-size: 1.05rem;}
+      .diferenciales-list { font-size:0.89rem; gap: 5px 10px;}
+      .diferenciales-list div { padding: 4px 6px;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR SIEMPRE ARRIBA -->
+<nav class="navbar-grupoene">
+  <div class="navbar-content">
+    <img src="images/LOGO GRUPO ENE.png" alt="Grupo ENE Logo" class="navbar-logo">
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="servicios.html" class="active">Servicios</a></li>
+      <li><a href="#" class="disabled">Productos <span class="badge">En mantenimiento</span></a></li>
+      <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="servicios" style="background:#101010;padding:0;margin:0;">
+  <div style="max-width:1150px;margin:0 auto;padding:0 0 40px 0;">
+    <header style="text-align:center;padding:58px 10px 32px 10px;">
+      <h2 style="color:#d32f2f;font-size:2.2rem;font-weight:900;letter-spacing:2px;margin-bottom:10px;text-transform:uppercase;">Nuestros Servicios</h2>
+      <p style="color:#e0e0e0;font-size:1.13rem;letter-spacing:1px;font-weight:400;">
+        Especialistas en <span style="color:#fff;background:#d32f2f;padding:0.13em 0.8em;border-radius:9px;">motores</span> y mecánica integral
+      </p>
+    </header>
+    <!-- SERVICIO 1 -->
+    <div class="servicio-row">
+      <div class="servicio-img-bg" style="background-image:url('images/como-reparar-un-motor.jpg');"></div>
+      <div class="servicio-info left">
+        <h3>Armado y desarmado de motor</h3>
+        <p>Reparación integral con precisión y garantía.<br> Tecnología y experiencia en cada detalle.</p>
+      </div>
+    </div>
+    <!-- SERVICIO 2 -->
+    <div class="servicio-row reverse">
+      <div class="servicio-img-bg" style="background-image:url('images/diagnostico.jpg');"></div>
+      <div class="servicio-info right">
+        <h3>Diagnóstico computarizado</h3>
+        <p>Detección rápida y precisa de fallas.<br>Equipos de última generación para resultados concretos.</p>
+      </div>
+    </div>
+    <!-- SERVICIO 3 -->
+    <div class="servicio-row">
+      <div class="servicio-img-bg" style="background-image:url('images/service-filtros.webp');"></div>
+      <div class="servicio-info left">
+        <h3>Service de filtros y aceites</h3>
+        <p>Prevención y mantenimiento.<br> Lubricación y cambio de filtros para máxima vida útil.</p>
+      </div>
+    </div>
+    <!-- SERVICIO 4 -->
+    <div class="servicio-row reverse">
+      <div class="servicio-img-bg" style="background-image:url('images/tren-delantero.jpg');"></div>
+      <div class="servicio-info right">
+        <h3>Tren delantero y suspensión</h3>
+        <p>Alineación, revisión y reparación.<br> Seguridad y confort en cada kilómetro.</p>
+      </div>
+    </div>
+    <!-- SERVICIO 5 -->
+    <div class="servicio-row">
+      <div class="servicio-img-bg" style="background-image:url('images/frenos-embragues.jpg');"></div>
+      <div class="servicio-info left">
+        <h3>Frenos y embragues</h3>
+        <p>Componentes críticos con servicio profesional.<br> Reemplazo, ajuste y revisión.</p>
+      </div>
+    </div>
+    <!-- SERVICIO 6 -->
+    <div class="servicio-row reverse">
+      <div class="servicio-img-bg" style="background-image:url('images/mecanica-general.jpg');"></div>
+      <div class="servicio-info right">
+        <h3>Mecánica general</h3>
+        <p>Soluciones completas para cualquier problema.<br> Tu auto, siempre en manos expertas.</p>
+      </div>
+    </div>
+
+    <!-- BLOQUE DIFERENCIAL -->
+    <div class="servicios-diferenciales">
+      <h4>¿Por qué elegirnos?</h4>
+      <div class="diferenciales-list">
+        <div><span>✔</span> Atención personalizada y asesoría durante el service</div>
+        <div><span>✔</span> Repuestos originales</div>
+        <div><span>✔</span> Turno online fácil</div>
+        <div><span>✔</span> Garantía escrita</div>
+        <div><span>✔</span> Servicio de urgencias</div>
+        <div><span>✔</span> Entrega rápida</div>
+        <div><span>✔</span> Atención especial a empresas y flotas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
